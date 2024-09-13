@@ -1,22 +1,23 @@
 <script>
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
+import { store } from './store';
 export default {
   components: {
     AppHeader
   },
   data() {
     return {
-      pokemonName: "",
-      pokemon: {}
+      store
     }
   },
   methods : {
      printPokemon() {
-       const searchPokemon = `https://pokeapi.co/api/v2/pokemon/${this.pokemonName}`
+       const searchPokemon = `https://pokeapi.co/api/v2/pokemon/${this.store.pokemonName}`
        axios.get(searchPokemon).then((resp) => {
         console.log(resp); 
-        this.pokemon = resp.data;
+        this.store.pokemon = resp.data;
+        
        });
      }
   }
@@ -24,22 +25,21 @@ export default {
 }
 </script>
 <template>
-  <AppHeader/>
-
-  <input v-model="pokemonName" type="text">
-  <button @click="printPokemon">Ottieni Pokemon</button>
+  <AppHeader @printPokemon="printPokemon"/>
 
   
-  <div class="d-flex justify-content-center mt-5">
-    <div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
+
+  
+  <!-- <div class="d-flex justify-content-center mt-5">
+    <div class="card" style="width: 18rem;"> -->
+  <!-- <ul class="list-group list-group-flush">
     <div v-if="(pokemon.sprites.front_default !== null)">
       <img :src="pokemon.sprites.front_default" alt="">
     </div>
     <div v-else>
         <span>Immagine non presente</span>
-    </div>
-    <li class="list-group-item"> Name:{{ pokemon.name }}</li>
+    </div> -->
+    <!-- <li class="list-group-item"> Name:{{ pokemon.name }}</li>
     <li v-for="(type) in pokemon.types" class="list-group-item">
       Type: {{ type.type.name }}
     </li>
@@ -48,15 +48,15 @@ export default {
     </li>
     <li class="list-group-item">
       Weight: {{ pokemon.weight }} Ibs
-    </li>
-  </ul>
-   <div>
+    </li> -->
+
+   <!-- <div>
      <ul>
       <li v-for="(curStat) in pokemon.stats" >
         {{ curStat.stat.name }} {{ curStat.base_stat }}
       </li>
      </ul>
    </div>
-</div>
-  </div>
+</div> -->
+  <!-- </div> -->
 </template>
