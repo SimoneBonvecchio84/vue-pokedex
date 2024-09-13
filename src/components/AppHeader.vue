@@ -15,6 +15,7 @@ export default {
   }
 };
 </script>
+
 <template>
     <input v-model="pokemonName" type="text">
     <button @click="$emit('printPokemon')">Ottieni Pokemon</button>
