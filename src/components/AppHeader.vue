@@ -17,6 +17,15 @@ export default {
 </script>
 
 <template>
-    <input v-model="pokemonName" type="text">
-    <button @click="$emit('printPokemon')">Ottieni Pokemon</button>
+  
+  
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">Pokemon Hunter</a>
+      <div class="d-flex" role="search">
+        <input v-model="pokemonName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button @click="$emit('printPokemon')" class="btn btn-outline-danger" type="submit">Ottieni Pokemon</button>  
+      </div>
+    </div>
+  </nav>
 </template>
