@@ -8,8 +8,12 @@ export default {
     },
     methods: {
         statBar(value) {
-            const maxValueBar = 250;
-            return (value / maxValueBar) * 100;
+            const maxValueBar = 250; // valore numerico massimo
+            // calcolo valore in percentuale
+            // calcoliamo il valore in percentuale dividendo (value) che poi sarà base_stat
+            // per il valore massimo (maxValueBar) e poi moltiplicato * 100 ottenedo così la larghezza della
+            // barra in percentuale
+            return (value / maxValueBar) * 100; 
         }
     }
 };
@@ -17,8 +21,8 @@ export default {
 
 <template>
     <div class="container-img">
-        <img :src="pokemon.sprites.front_default" alt="">
-        <img :src="pokemon.sprites.back_default" alt="">
+        <img class="img-front" :src="pokemon.sprites.front_default" alt="">
+        <img class="img-back" :src="pokemon.sprites.back_default" alt="">
     </div>
     <div class="pokemon-card">
         <div>Name: {{ pokemon.name }}</div>
@@ -38,12 +42,13 @@ export default {
     <div>
         <div>Status</div>
         <ul>
-            <li v-for="(curStat) in pokemon.stats" class="d-flex">
+            <li v-for="(curStat) in pokemon.stats" class="d-flex li-bar">
                 <div class="stat-name">
                     {{ curStat.stat.name }} :
                 </div>
-                
+                <!-- Elemento padre vuoto -->
                 <div class="stat-bar">
+                     <!--elemento figlio che si riempe di tot % in base al numero restituito da statBar  -->
                     <div class="stat-bar-fill" :style="{ width: statBar(curStat.base_stat) + '%' }"></div>
                 </div>
             </li>
@@ -62,8 +67,54 @@ ul {
     margin-left: -30px;
 }
 
+
 .container-img{
     margin-top: 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 1000px; /* Questo dà un effetto 3D per l'animazione */
+}
+
+.img-front, .img-back{
+    position: absolute; 
+    backface-visibility: hidden; /* Nasconde il resto dell'immagine quando viene ruotata*/
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+
+/* Anima l'alternanza delle immagini */
+@keyframes alternateImages {
+  0%, 50% {
+    opacity: 1; /* Mostra l'immagine frontale */
+  }
+  50.01%, 100% {
+    opacity: 0; /* Nasconde l'immagine frontale, mostrando quella posteriore */
+  }
+}
+
+@keyframes alternateBackImages {
+  0%, 50% {
+    opacity: 0; /* Nasconde l'immagine posteriore all'inizio */
+  }
+  50.01%, 100% {
+    opacity: 1; /* Mostra l'immagine posteriore nella seconda metà dell'animazione */
+  }
+}
+
+/* Applica l'animazione alle due immagini */
+.img-front {
+  animation: alternateImages 1s infinite; /* Alternanza per l'immagine frontale */
+}
+
+.img-back {
+  animation: alternateBackImages 1s infinite; /* Alternanza per l'immagine posteriore */
 }
 
 .pokemon-card {
@@ -75,11 +126,11 @@ ul {
   margin-top: 20px;
 }
 .stat-name {
-    width: 10%;
+    width: 30%;
     margin-left: -30px;
 }
 .stat-bar {
-  width: 20%;
+  width: 80%;
   background-color: #eee;
   height: 10px;
   margin: 5px 0;

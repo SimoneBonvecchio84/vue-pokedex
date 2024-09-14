@@ -49,21 +49,24 @@ export default {
 <template>
   <div class="container">
     <AppHeader v-model="pokemonName" @printPokemon="printPokemon" @click="capturePokemon" />
-    <div>
-
-      <AppCard v-if="pokemon" :pokemon="pokemon" /> 
-      <div v-else>
-        <p>Nessun Pokémon selezionato.</p>
-      </div>
-      <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" />
-      <div v-else>
-        <p>Nessun Pokémon Catturato.</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <AppCard v-if="pokemon" :pokemon="pokemon" />
+          <div v-else>
+            <p>Nessun Pokémon selezionato.</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" />
+          <div v-else>
+            <p>Nessun Pokémon Catturato.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 
-<style>
-
-</style>
+<style></style>
