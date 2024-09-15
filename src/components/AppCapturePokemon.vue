@@ -9,8 +9,6 @@ export default {
 };
 </script>
 
-
-
 <template>
     <div>
         <h3>Pokémon Catturati</h3>

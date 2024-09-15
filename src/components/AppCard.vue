@@ -39,7 +39,7 @@ export default {
 
     </div>
 
-    <div>
+    <div class="cont-status">
         <div>Status</div>
         <ul>
             <li v-for="(curStat) in pokemon.stats" class="d-flex li-bar">
@@ -52,7 +52,6 @@ export default {
                     <div class="stat-bar-fill" :style="{ width: statBar(curStat.base_stat) + '%' }"></div>
                 </div>
             </li>
-
 
         </ul>
     </div>
@@ -69,9 +68,9 @@ ul {
 
 
 .container-img{
-    margin-top: 20px;
+    margin: auto;
     border: 2px solid;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 400px;
     height: 200px;
     display: flex;
@@ -79,6 +78,7 @@ ul {
     align-items: center;
     position: relative;
     perspective: 1000px; /* Questo dà un effetto 3D per l'animazione */
+    background-color: beige;
 }
 
 .img-front, .img-back{
@@ -118,12 +118,19 @@ ul {
 }
 
 .pokemon-card {
-  border: 1px solid #ccc;
+  margin: auto;  
+  border: 2px solid;
   padding: 10px;
   border-radius: 8px;
   max-width: 300px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  background-color: beige;
+}
+
+.cont-status {
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: beige;
 }
 .stat-name {
     width: 30%;
@@ -131,7 +138,8 @@ ul {
 }
 .stat-bar {
   width: 80%;
-  background-color: #eee;
+  background-color:white;
+  border: 1px solid;
   height: 10px;
   margin: 5px 0;
   position: relative;

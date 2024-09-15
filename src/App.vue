@@ -47,20 +47,24 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-big">
     <AppHeader v-model="pokemonName" @printPokemon="printPokemon" @click="capturePokemon" />
     <div class="container">
-      <div class="row">
+      <div class="row p-1">
         <div class="col-6">
-          <AppCard v-if="pokemon" :pokemon="pokemon" />
-          <div v-else>
-            <p>Nessun Pokémon selezionato.</p>
+          <div class="cont-stat">
+            <AppCard v-if="pokemon" :pokemon="pokemon" />
+            <div v-else>
+              <p>Nessun Pokémon selezionato.</p>
+            </div>
           </div>
         </div>
         <div class="col-6">
-          <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" />
-          <div v-else>
-            <p>Nessun Pokémon Catturato.</p>
+          <div class="cont-chatc">
+            <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" />
+            <div v-else>
+              <p>Nessun Pokémon Catturato.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -69,4 +73,15 @@ export default {
 </template>
 
 
-<style></style>
+<style>
+body {
+  background-color: beige;
+}
+.cont-stat, .cont-chatc {
+  border: solid 2px ;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: darkgreen;
+}
+
+</style>
