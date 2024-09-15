@@ -17,5 +17,6 @@ export default {
                 {{ poke.name }}
             </li>
         </ul>
+        
     </div>
 </template>

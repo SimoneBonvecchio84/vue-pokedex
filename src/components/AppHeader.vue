@@ -23,7 +23,8 @@ export default {
       <div class="d-flex px-3 align-items-center" role="search">
         <input v-model="pokemonName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button @click="$emit('printPokemon')" class="btn btn-outline-light me-2" type="submit">Vedi Pokemon</button> 
-        <a @click="$emit('capturePokemon')"  type="btn"><img class="img-btn" src="../assets/img/pokeball.jpg" alt=""></a>    
+        <a @click="$emit('capturePokemon')"  type="btn"><img class="img-btn me-2" src="../assets/img/pokeball.jpg" alt=""></a>
+        <button @click="$emit('freePokemon')" class="btn btn-outline-light me-2" type="submit">Libera Pokemon</button>    
       </div>
     </div>
   </nav>

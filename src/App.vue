@@ -34,13 +34,21 @@ export default {
         console.error("Pokémon non trovato", err);
         this.pokemon = null;  // Pulisce i dati precedenti in caso di errore
       });
-      this.capturePokemon()
+      this.capturePokemon();
+      
     },
     capturePokemon() {
       if (this.pokemon && !this.capturedPokemon.find(p => p.name === this.pokemon.name)) {
         this.capturedPokemon.push(this.pokemon);
         localStorage.setItem("capturedPokemon", JSON.stringify(this.capturedPokemon)); // Salva nel localStorage
       }
+    },
+    freePokemon() {
+      localStorage.clear();
+      // window.location.reload()
+      this.capturedPokemon = [];
+      console.log(localStorage)
+
     }
   }
 };
@@ -48,7 +56,11 @@ export default {
 
 <template>
   <div class="container-big">
-    <AppHeader v-model="pokemonName" @printPokemon="printPokemon" @click="capturePokemon" />
+    <AppHeader v-model="pokemonName" 
+    @printPokemon="printPokemon" 
+    @capturePokemon="capturePokemon"
+    @freePokemon="freePokemon"
+    />
     <div class="container">
       <div class="row p-1">
         <div class="col-6">
@@ -58,10 +70,13 @@ export default {
               <p>Nessun Pokémon selezionato.</p>
             </div>
           </div>
+          <div>
+            
+          </div>
         </div>
         <div class="col-6">
           <div class="cont-chatc">
-            <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" />
+            <AppCapturePokemon v-if="capturedPokemon" :capturedPokemon="capturedPokemon" @click="freePokemon"/>
             <div v-else>
               <p>Nessun Pokémon Catturato.</p>
             </div>
