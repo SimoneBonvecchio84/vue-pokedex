@@ -25,19 +25,13 @@ export default {
         <img class="img-front" :src="pokemon.sprites.front_default" alt="">
         <img class="img-back" :src="pokemon.sprites.back_default" alt="">
     </div>
-    <div class="pokemon-card mt-2  mb-2">
-        <div>Name: {{ pokemon.name }}</div>
-        <ul>
-            <li class="li-type" v-for="(curType) in pokemon.types">
-                Type: {{ curType.type.name }}
-            </li>
-        </ul>
-       
-        
-        <div>Height: {{ pokemon.height }}" </div>
-        <div>Weight: {{ pokemon.weight }} Ibs.</div>
-
-
+    <div class="pokemon-card ">
+        <div> <span>Name:</span> {{ pokemon.name }}</div>        
+        <div class="li-type" v-for="(curType) in pokemon.types">
+           <span>Type:</span>  {{ curType.type.name }}
+        </div>      
+        <div> <span>Height:</span>  {{ pokemon.height }}" </div>
+        <div> <span> Weight:</span> {{ pokemon.weight }} Ibs.</div>
     </div>
 
     <div class="cont-status">
@@ -62,15 +56,6 @@ export default {
 .cont-left {
   height:631px;
 }
-ul {
-    list-style-type: none;
-    margin-top: 20px;
-}
-
-.li-type{
-    margin-left: -30px;
-}
-
 
 .container-img{
     margin: auto;
