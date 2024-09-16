@@ -20,11 +20,12 @@ export default {
 </script>
 
 <template>
+  <div class="cont-left">
     <div class="container-img">
         <img class="img-front" :src="pokemon.sprites.front_default" alt="">
         <img class="img-back" :src="pokemon.sprites.back_default" alt="">
     </div>
-    <div class="pokemon-card">
+    <div class="pokemon-card mt-2  mb-2">
         <div>Name: {{ pokemon.name }}</div>
         <ul>
             <li class="li-type" v-for="(curType) in pokemon.types">
@@ -55,8 +56,12 @@ export default {
 
         </ul>
     </div>
+  </div>
 </template>
 <style scoped>
+.cont-left {
+  height:631px;
+}
 ul {
     list-style-type: none;
     margin-top: 20px;
